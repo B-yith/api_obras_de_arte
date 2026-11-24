@@ -1,0 +1,274 @@
+Para ativar pelo VsCode
+
+.\venv\Scripts\Activate.ps1
+
+python manage.py runserver
+
+Para adicionar
+
+{
+    "nome": "Abaporu",
+    "artista": "Tarsila do Amaral",
+    "ano_criacao": 1928,
+    "movimento_artistico": "Modernismo Brasileiro",
+    "tecnica": "Óleo sobre tela",
+    "museu": "MALBA",
+    "pais_origem": "Argentina",
+    "descricao": "Obra icônica do modernismo brasileiro, considerada um símbolo do movimento antropofágico.",
+    "valor_estimado": 100000000.00
+  }
+
+
+
+
+MODELAGEM DO BANCO PARA UMA API EM DJANGO
+
+-NOME DA DB = db_obras_de_arte
+-NOME DA TABELA = obras_arte
+-DEFINIR COLUNAS = id, nome, artista, ano criação, movimento artístico, técnica, museu, pais origem, descrição, valor_estimado
+
+
+10 END POINTS
+4 DELES SÃO O CRUD
+1 DELES É BUSCA POR ID
+
+GET = /api/obras			Listar todas as obras
+POST = /api/obras/			Cadastrar uma nova obra
+PUT = /api/obras/{id}/			Atualizar todos os dados de uma obra
+DELETE = /api/obras/{id}/		Excluir uma obra
+GET = /api/obras/{id}/			Buscar uma obra pelo ID
+GET = /api/obras/artista/{nome}/	Buscar obras pelo nome do artista
+GET = /api/obras/movimento/{nome}/	Buscar obras por movimento artístico
+GET = /api/obras/museu/{nome}/		Buscar obras por museu
+GET = /api/obras/ano/{ano}/		Buscar obras pelo ano de criação
+GET = /api/obras/buscar/?nome={nome}	Pesquisar obras pelo nome
+
+exemplo de cadastro do json
+
+{
+    "nome": "Mona Lisa",
+    "artista": "Leonardo da Vinci",
+    "ano_criacao": 1503,
+    "movimento_artistico": "Renascimento",
+    "tecnica": "Pintura a óleo",
+    "museu": "Museu do Louvre",
+    "pais_origem": "Itália",
+    "descricao": "Retrato famoso de uma mulher com um sorriso enigmático.",
+    "valor_estimado": 860000000.00
+}
+
+BANCO DE DADOS
+
+CREATE DATABASE db_obras_de_arte;
+
+USE db_obras_de_arte;
+
+TABELA
+
+CREATE TABLE obras_arte (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    artista VARCHAR(150) NOT NULL,
+    ano_criacao INT,
+    movimento_artistico VARCHAR(100),
+    tecnica VARCHAR(100),
+    museu VARCHAR(150),
+    pais_origem VARCHAR(100),
+    descricao TEXT,
+    valor_estimado DECIMAL(15,2)
+);
+
+
+INSERIR ALGUMAS OBRAS
+
+INSERT INTO obras_arte
+(nome, artista, ano_criacao, movimento_artistico, tecnica, museu, pais_origem, descricao, valor_estimado)
+VALUES
+
+
+
+[
+  {
+    "nome": "Mona Lisa",
+    "artista": "Leonardo da Vinci",
+    "ano_criacao": 1503,
+    "movimento_artistico": "Renascimento",
+    "tecnica": "Pintura a óleo sobre madeira",
+    "museu": "Museu do Louvre",
+    "pais_origem": "França",
+    "descricao": "Retrato famoso de Lisa Gherardini, conhecido pelo sorriso enigmático.",
+    "valor_estimado": 860000000.00
+  },
+  {
+    "nome": "A Noite Estrelada",
+    "artista": "Vincent van Gogh",
+    "ano_criacao": 1889,
+    "movimento_artistico": "Pós-Impressionismo",
+    "tecnica": "Óleo sobre tela",
+    "museu": "MoMA",
+    "pais_origem": "Estados Unidos",
+    "descricao": "Representa uma paisagem noturna com estrelas brilhantes e formas ondulantes no céu.",
+    "valor_estimado": 100000000.00
+  },
+  {
+    "nome": "A Persistência da Memória",
+    "artista": "Salvador Dalí",
+    "ano_criacao": 1931,
+    "movimento_artistico": "Surrealismo",
+    "tecnica": "Óleo sobre tela",
+    "museu": "MoMA",
+    "pais_origem": "Estados Unidos",
+    "descricao": "Obra surrealista conhecida pelos relógios derretidos, explorando a percepção do tempo.",
+    "valor_estimado": 50000000.00
+  },
+  {
+    "nome": "O Grito",
+    "artista": "Edvard Munch",
+    "ano_criacao": 1893,
+    "movimento_artistico": "Expressionismo",
+    "tecnica": "Têmpera e giz de cera sobre cartão",
+    "museu": "Museu Nacional da Noruega",
+    "pais_origem": "Noruega",
+    "descricao": "Representa uma figura humana expressando angústia diante de uma paisagem dramática.",
+    "valor_estimado": 120000000.00
+  },
+  {
+    "nome": "A Última Ceia",
+    "artista": "Leonardo da Vinci",
+    "ano_criacao": 1498,
+    "movimento_artistico": "Renascimento",
+    "tecnica": "Têmpera e óleo sobre parede",
+    "museu": "Santa Maria delle Grazie",
+    "pais_origem": "Itália",
+    "descricao": "Representa a última refeição de Jesus Cristo com seus apóstolos.",
+    "valor_estimado": 150000000.00
+  },
+  {
+    "nome": "Guernica",
+    "artista": "Pablo Picasso",
+    "ano_criacao": 1937,
+    "movimento_artistico": "Cubismo",
+    "tecnica": "Óleo sobre tela",
+    "museu": "Museu Reina Sofía",
+    "pais_origem": "Espanha",
+    "descricao": "Representa os horrores da Guerra Civil Espanhola e os impactos dos bombardeios sobre a população.",
+    "valor_estimado": 200000000.00
+  },
+  {
+    "nome": "O Nascimento de Vênus",
+    "artista": "Sandro Botticelli",
+    "ano_criacao": 1485,
+    "movimento_artistico": "Renascimento",
+    "tecnica": "Têmpera sobre tela",
+    "museu": "Galeria Uffizi",
+    "pais_origem": "Itália",
+    "descricao": "Representa o nascimento da deusa Vênus, emergindo do mar sobre uma concha.",
+    "valor_estimado": 150000000.00
+  },
+  {
+    "nome": "A Moça com Brinco de Pérola",
+    "artista": "Johannes Vermeer",
+    "ano_criacao": 1665,
+    "movimento_artistico": "Barroco",
+    "tecnica": "Óleo sobre tela",
+    "museu": "Mauritshuis",
+    "pais_origem": "Países Baixos",
+    "descricao": "Retrato de uma jovem usando um brinco de pérola, conhecido pela iluminação e expressão.",
+    "valor_estimado": 100000000.00
+  },
+  {
+    "nome": "O Beijo",
+    "artista": "Gustav Klimt",
+    "ano_criacao": 1908,
+    "movimento_artistico": "Art Nouveau",
+    "tecnica": "Óleo e folha de ouro sobre tela",
+    "museu": "Galeria Belvedere",
+    "pais_origem": "Áustria",
+    "descricao": "Representa um casal apaixonado envolto em detalhes dourados e padrões ornamentais.",
+    "valor_estimado": 150000000.00
+  },
+  {
+    "nome": "As Meninas",
+    "artista": "Diego Velázquez",
+    "ano_criacao": 1656,
+    "movimento_artistico": "Barroco",
+    "tecnica": "Óleo sobre tela",
+    "museu": "Museu do Prado",
+    "pais_origem": "Espanha",
+    "descricao": "Retrata a infanta Margarida Teresa, suas acompanhantes e outros membros da corte espanhola.",
+    "valor_estimado": 200000000.00
+  },
+  {
+    "nome": "O Pensador",
+    "artista": "Auguste Rodin",
+    "ano_criacao": 1904,
+    "movimento_artistico": "Escultura Moderna",
+    "tecnica": "Escultura em bronze",
+    "museu": "Museu Rodin",
+    "pais_origem": "França",
+    "descricao": "Escultura que representa um homem sentado em profunda reflexão.",
+    "valor_estimado": 50000000.00
+  },
+  {
+    "nome": "A Grande Onda de Kanagawa",
+    "artista": "Katsushika Hokusai",
+    "ano_criacao": 1831,
+    "movimento_artistico": "Ukiyo-e",
+    "tecnica": "Xilogravura colorida sobre papel",
+    "museu": "Metropolitan Museum of Art",
+    "pais_origem": "Estados Unidos",
+    "descricao": "Gravura japonesa que representa uma enorme onda ameaçando pequenas embarcações.",
+    "valor_estimado": 5000000.00
+  },
+  {
+    "nome": "American Gothic",
+    "artista": "Grant Wood",
+    "ano_criacao": 1930,
+    "movimento_artistico": "Regionalismo Americano",
+    "tecnica": "Óleo sobre painel de madeira",
+    "museu": "Art Institute of Chicago",
+    "pais_origem": "Estados Unidos",
+    "descricao": "Retrata um fazendeiro e uma mulher diante de uma casa em estilo neogótico rural.",
+    "valor_estimado": 50000000.00
+  },
+  {
+    "nome": "O Filho do Homem",
+    "artista": "René Magritte",
+    "ano_criacao": 1964,
+    "movimento_artistico": "Surrealismo",
+    "tecnica": "Óleo sobre tela",
+    "museu": "Coleção particular",
+    "pais_origem": "Bélgica",
+    "descricao": "Retrato de um homem de terno e chapéu-coco com o rosto parcialmente escondido por uma maçã verde.",
+    "valor_estimado": 80000000.00
+  },
+  
+]
+
+
+CRIANDO O AMBIENTE VIRTUAL
+
+python -m venv venv
+
+venv\Scripts\activate
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+BIBLIOTECAS
+
+pip install django
+pip install djangorestframework
+pip install mysqlclient
+
+pip list
+
+PROJETO
+
+django-admin startproject config .
+
+python manage.py startapp obras
+
+VERSAO DO DJANGO COMPATIVEL
+pip install "django>=4.2,<4.3"
+
+http://127.0.0.1:8000/api/obras/
